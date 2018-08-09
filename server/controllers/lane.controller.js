@@ -10,7 +10,7 @@ export function addLane(req, res) {
     res.status(403).end();
   }
 
-  // jeżeli "ciało zapytania" nie posiada name to error 403, jeśli posiada, to tworzymy newLane na podstawie "ciała zapytania"
+  // jeżeli "ciało zapytania" nie posiada name to error 403 (patrz wyżej), jeśli posiada, to tworzymy newLane na podstawie "ciała zapytania"
   const newLane = new Lane(req.body);
   newLane.notes = [];
   newLane.id = uuid();
@@ -19,5 +19,15 @@ export function addLane(req, res) {
       res.status(500).send(err);
     }
     res.json(saved);
+  });
+}
+
+// metoda find() bez żadnych parametrów zwróci wszystkie dokumenty z kolekcji lanes
+export function getLanes(req, res) {
+  Lane.find().exec((err, lanes) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ lanes });
   });
 }
