@@ -12,7 +12,7 @@ export function addLane(req, res) {
 
   // jeżeli "ciało zapytania" nie posiada name to error 403 (patrz wyżej), jeśli posiada, to tworzymy newLane na podstawie "ciała zapytania"
   const newLane = new Lane(req.body);
-  
+
   newLane.notes = [];
   newLane.id = uuid();
   newLane.save((err, saved) => {

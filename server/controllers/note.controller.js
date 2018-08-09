@@ -33,3 +33,24 @@ export function addNote(req, res) {
       });
   });
 }
+
+export function deleteNote(req, res) {
+  Note.findOne({ id: req.params.noteId }).exec((err, note) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    if (note) {
+      Lane.findOne({ notes: note._id }).exec((err, lane) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+        lane.notes.pull(note);
+        lane.save();
+        res.status(200).send(note);
+      })
+    } else {
+        res.status(500).send(err);
+      }
+  })
+}
