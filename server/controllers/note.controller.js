@@ -49,17 +49,15 @@ export function deleteNote(req, res) {
         lane.save();
         res.status(200).send(note);
       })
-    } else {
-        res.status(500).send(err);
-      }
+    }
   })
 }
 
-export function editNoteName(req, res) {
-  Note.findOneAndUpdate({ id: req.body.id}, req.body, {new: true}).exec((err, newnote) => {
+export function editNoteTask(req, res) {
+  Note.findOneAndUpdate({ id: req.body.id}, req.body, {new: true}).exec((err, newtask) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json(newnote);
+    res.json(newtask);
   })
 }
