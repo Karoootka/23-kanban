@@ -54,3 +54,12 @@ export function deleteNote(req, res) {
       }
   })
 }
+
+export function editNoteName(req, res) {
+  Note.findOneAndUpdate({ id: req.body.id}, req.body, {new: true}).exec((err, newnote) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json(newnote);
+  })
+}
