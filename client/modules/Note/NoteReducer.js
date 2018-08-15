@@ -4,17 +4,18 @@ import { CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE } from './NoteActions';
 // Initial State
 const initialState = {};
 
-export default functions notes(state = initialState, action) {
+export default function notes(state = initialState, action) {
   switch (action.type) {
 
     case CREATE_NOTE:
-      return [...state, note.action];
+      return [...state, action.note];
 
     case UPDATE_NOTE:
       return state.map(note => {
         if (note.id === action.id) {
-          return Object.assign({}, lane, action.note);
+          return Object.assign({}, note, action.note);
         }
+        return note;
       })
 
     // case UPDATE_NOTE:
@@ -29,5 +30,3 @@ export default functions notes(state = initialState, action) {
       return state;
   }
 }
-
-export default NoteReducer;

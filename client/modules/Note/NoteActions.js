@@ -14,20 +14,20 @@ export function createNote(note, laneId) {
       id: uuid(),
       ...note,
     }
-  };
+  }
 }
 
 export function updateNote(note) {
   return {
     type: UPDATE_NOTE,
     note,
-  };
+  }
 }
 
 export function deleteNote(note, laneId) {
   return {
     type: DELETE_NOTE,
     noteId,
-    laneId
-  };
+    laneId,
+  }
 }
