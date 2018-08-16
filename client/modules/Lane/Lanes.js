@@ -1,7 +1,7 @@
 import Reactt, { PropTypes } from 'react';
 import Lane from '.Lane.js';
 
-const Lane = ({ lanes }) => {
+const Lanes = ({ lanes }) => {
   return (
     <div className="lanes">
       {lanes.map(lane =>
