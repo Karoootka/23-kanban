@@ -1,8 +1,8 @@
 // Import Actions
-import { CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE } from './NoteActions';
+import { CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE, EDIT_NOTE } from './NoteActions';
 
 // Initial State
-const initialState = {};
+const initialState = [];
 
 export default function notes(state = initialState, action) {
   switch (action.type) {

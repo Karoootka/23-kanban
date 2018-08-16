@@ -3,7 +3,7 @@ import { CREATE_LANE, UPDATE_LANE, DELETE_LANE, EDIT_LANE } from './LaneActions'
 import { CREATE_NOTE, DELETE_NOTE } from '../Note/NoteActions';
 
 // Initial State
-const initialState = {};
+const initialState = [];
 
 export default function lanes(state = initialState, action) {
   switch (action.type) {
@@ -45,7 +45,7 @@ export default function lanes(state = initialState, action) {
 
     case DELETE_NOTE:
       return state.map(lane => {
-        if (lane.id === actions.laneId) {
+        if (lane.id === action.laneId) {
           const notes = lane.notes.filter(noteId => noteId !== action.noteId);
           return { ...lane, notes};
         }

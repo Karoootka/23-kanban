@@ -1,13 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Edit.css';
 
 export default class Edit extends Component {
   checkEnter = (e) => {
     if (e.key === 'Enter') {
-      this.finisEdit(e);
+      this.finishEdit(e);
     }
   }
-  finisEdit = (e) => {
+  finishEdit = (e) => {
     const value = e.target.value;
 
     if (this.props.onUpdate) {

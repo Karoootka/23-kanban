@@ -9,7 +9,7 @@ export const EDIT_NOTE = 'EDIT_NOTE';
 // Export Actions
 export function createNote(note, laneId) {
   return {
-    type: CREATE_LANE,
+    type: CREATE_NOTE,
     laneId,
     note: {
       id: uuid(),
@@ -25,7 +25,7 @@ export function updateNote(note) {
   }
 }
 
-export function deleteNote(note, laneId) {
+export function deleteNote(noteId, laneId) {
   return {
     type: DELETE_NOTE,
     noteId,
@@ -33,7 +33,7 @@ export function deleteNote(note, laneId) {
   }
 }
 
-export function editNote(notId) {
+export function editNote(noteId) {
   return {
     type: EDIT_NOTE,
     noteId,

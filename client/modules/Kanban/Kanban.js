@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createLane } from '../Lane/LaneActions';
+import { createLane, fetchLanes } from '../Lane/LaneActions';
 import Lanes from '../Lane/Lanes';
 
 // Import Style
-// import styles from './Kanban.css';
-import styles from '../Lane/Lane.css';
+import styles from './Kanban.css';
+// import styles from '../Lane/Lane.css';
 
 const Kanban = props => (
   <div>
@@ -20,7 +20,7 @@ const Kanban = props => (
   </div>
 );
 
-// Kanban.need = [() => { return fetchLanes(); }];
+Kanban.need = [() => { return fetchLanes(); }];
 
 Kanban.propTypes = {
   lanes: PropTypes.array,
