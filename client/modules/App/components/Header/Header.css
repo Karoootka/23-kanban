@@ -1,0 +1,13 @@
+.header {
+  background-color: #b6b6b6;
+  height: 60px;
+  color: #343a40;
+  padding-left: 15px;
+}
+
+.header h1 {
+  font-size: 30px;
+  line-height: 60px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}

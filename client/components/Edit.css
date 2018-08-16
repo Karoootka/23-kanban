@@ -1,1 +1,9 @@
 /* Edit styles */
+
+.laneName {
+  display: flex;
+}
+
+.value {
+  flex: 1;
+}

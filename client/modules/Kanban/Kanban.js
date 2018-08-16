@@ -9,9 +9,9 @@ import styles from './Kanban.css';
 // import styles from '../Lane/Lane.css';
 
 const Kanban = props => (
-  <div>
+  <div className={styles.buttonLane}>
     <button
-      className={styles.AddLane}
+      className={styles.buttonAddLane}
       onClick={() => props.createLane({
         name: 'New Lane',
       })}
