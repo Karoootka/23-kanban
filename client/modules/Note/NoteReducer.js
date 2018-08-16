@@ -12,7 +12,7 @@ export default function notes(state = initialState, action) {
 
     case UPDATE_NOTE:
       return state.map(note => {
-        if (note.id === action.id) {
+        if (note.id === action.note.id) {
           return Object.assign({}, note, action.note);
         }
         return note;
@@ -25,6 +25,13 @@ export default function notes(state = initialState, action) {
 
     case DELETE_NOTE:
       return state.filter(note => note.id !== action.noteId);
+
+    case EDIT_NOTE:
+      return state.filter(note => {
+        if (note.id === action.noteId) {
+          return note.editing = true;
+        };
+      })
 
     default:
       return state;
