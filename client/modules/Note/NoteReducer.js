@@ -27,10 +27,11 @@ export default function notes(state = initialState, action) {
       return state.filter(note => note.id !== action.noteId);
 
     case EDIT_NOTE:
-      return state.filter(note => {
+      return state.map(note => {
         if (note.id === action.noteId) {
-          return note.editing = true;
+          note.editing = true;
         };
+        return note;
       })
 
     default:

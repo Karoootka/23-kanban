@@ -28,10 +28,11 @@ export default function lanes(state = initialState, action) {
       return state.filter(lane => lane.id !== action.laneId);
 
     case EDIT_LANE:
-      return state.filter(lane => {
+      return state.map(lane => {
         if (lane.id === action.laneId) {
-          return lane.editing = true;
+          lane.editing = true;
         };
+        return lane;
       })
 
     case CREATE_NOTE:

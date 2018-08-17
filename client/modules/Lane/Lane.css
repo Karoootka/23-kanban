@@ -3,14 +3,19 @@
 .Lanes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-evenly; */
+  margin: 0 auto;
 }
+
 
 .Lane {
   border: 1px solid #6f7276;
   border-radius: 5px;
-  width: 30%;
   position: relative;
+  min-width: 300px;
+  width: 30%;
+  /* margin-right: 15px; */
+  /* margin-left: 15px; */
 }
 
 .LaneHeader {
