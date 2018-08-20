@@ -53,9 +53,9 @@ export default function lanes(state = initialState, action) {
       // })
 
     case DELETE_NOTE:
-      const newLane = { ...state[action.laneId] };
-      newLane.notes = newLane.notes.filter(noteId => noteId !== action.noteId);
-      return { ...state, [action.laneId]: newLane };
+      const newLanee = { ...state[action.laneId] };
+      newLanee.notes = newLanee.notes.filter(noteId => noteId !== action.noteId);
+      return { ...state, [action.laneId]: newLanee };
       // return state.map(lane => {
       //   if (lane.id === action.laneId) {
       //     const notes = lane.notes.filter(noteId => noteId !== action.noteId);

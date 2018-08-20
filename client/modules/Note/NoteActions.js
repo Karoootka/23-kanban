@@ -12,11 +12,16 @@ export function createNote(note, laneId) {
   return {
     type: CREATE_NOTE,
     laneId,
-    note: {
-      id: uuid(),
-      ...note,
-    }
+    note
   }
+}
+
+export function createNoteRequest(note, laneId) {
+  return (dispatch) =>{
+    return callApi('notes', 'post', { note, laneId }).then(noteRes => {
+      dispatch(createNote(noteRes, laneId));
+    });
+  };
 }
 
 export function updateNote(note) {
