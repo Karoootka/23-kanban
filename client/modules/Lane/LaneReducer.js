@@ -11,14 +11,19 @@ export default function lanes(state = initialState, action) {
   switch (action.type) {
 
     case CREATE_LANE:
-      return { ...state, [action.lane.id]: action.lane };
-      // return [...state, action.lane];
-
     case UPDATE_LANE:
       return { ...state, [action.lane.id]: action.lane };
-      //   return state.map(lane => {
-      //     return lane.id === action.id ? { ...lane, ...action.lane } : lane;
-      //   });
+
+    // case CREATE_LANE:
+     // return [...state, action.lane];
+
+    // case UPDATE_LANE:
+      // return state.map(lane => {
+      //   if (lane.id === action.lane.id) {
+      //     return Object.assign({}, lane, action.lane);
+      //   }
+      //   return lane;
+      // })
 
     case DELETE_LANE:
       return omit(state, action.laneId);
