@@ -4,6 +4,13 @@
   display: flex;
 }
 
+.laneName button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
 .value {
   flex: 1;
 }
