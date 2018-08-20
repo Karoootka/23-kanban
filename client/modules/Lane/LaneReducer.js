@@ -14,55 +14,22 @@ export default function lanes(state = initialState, action) {
     case UPDATE_LANE:
       return { ...state, [action.lane.id]: action.lane };
 
-    // case CREATE_LANE:
-     // return [...state, action.lane];
-
-    // case UPDATE_LANE:
-      // return state.map(lane => {
-      //   if (lane.id === action.lane.id) {
-      //     return Object.assign({}, lane, action.lane);
-      //   }
-      //   return lane;
-      // })
-
     case DELETE_LANE:
       return omit(state, action.laneId);
-      // return state.filter(lane => lane.id !== action.laneId);
-
 
     case EDIT_LANE:
-      const lane = { ...state[action.id], editing: true};
-      return { ...state, [action.id]: lane };
-      // return state.map(lane => {
-      //   if (lane.id === action.laneId) {
-      //     lane.editing = true;
-      //   };
-      //   return lane;
-      // })
+      const lane = { ...state[action.laneId], editing: true};
+      return { ...state, [action.laneId]: lane };
 
     case CREATE_NOTE:
       const newLane = { ...state[action.laneId] };
       newLane.notes = newLane.notes.concat(action.note.id);
       return { ...state, [action.laneId]: newLane };
-      // return state.map(lane => {
-      //   if (lane.id === action.laneId) {
-      //     const notes = [...lane.notes, action.note.id];
-      //     return { ...lane, notes };
-      //   }
-      //   return lane;
-      // })
 
     case DELETE_NOTE:
-      const newLanee = { ...state[action.laneId] };
-      newLanee.notes = newLanee.notes.filter(noteId => noteId !== action.noteId);
-      return { ...state, [action.laneId]: newLanee };
-      // return state.map(lane => {
-      //   if (lane.id === action.laneId) {
-      //     const notes = lane.notes.filter(noteId => noteId !== action.noteId);
-      //     return { ...lane, notes};
-      //   }
-      //   return lane;
-      // })
+      const changedLane = { ...state[action.laneId] };
+      changedLane.notes = changedLane.notes.filter(noteId => noteId !== action.noteId);
+      return { ...state, [action.laneId]: changedLane };
 
     case CREATE_LANES:
       return { ...action.lanes };
