@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 import { createLaneRequest, fetchLanes } from '../Lane/LaneActions';
 import Lanes from '../Lane/Lanes';
 
@@ -35,4 +39,8 @@ const mapDispatchToProps = {
   createLane: createLaneRequest,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Kanban);
+// higher-order functions
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  DragDropContext(HTML5Backend)
+)(Kanban);

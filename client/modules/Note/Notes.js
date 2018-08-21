@@ -6,12 +6,14 @@ import Edit from '../../components/Edit';
 // Import Style
 import styles from './Note.css';
 
-const Notes = ({ notes, laneId, editNote, updateNote, deleteNote }) => {
+const Notes = ({ notes, laneId, editNote, updateNote, deleteNote, moveWithinLane }) => {
   return (
     <ul className={styles.Notes}>{ notes.map(note =>
       <Note
         id={note.id}
         key={note.id}
+        moveWithinLane={moveWithinLane}
+        laneId={laneId}
       >
         <Edit
           editing={note.editing}
@@ -32,6 +34,7 @@ Notes.propTypes = {
   editNote: PropTypes.func,
   updateNote: PropTypes.func,
   deleteNote: PropTypes.func,
+  moveWithinLane: PropTypes.func,
 };
 
 export default Notes;
