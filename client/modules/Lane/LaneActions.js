@@ -47,6 +47,11 @@ export function updateLaneRequest(lane) {
   };
 }
 
+// export function updateNotesInLaneRequest(lane) {
+  // return callApi('lanes', 'put', lane).then(res => {
+  // })
+// }
+
 export function deleteLane(laneId) {
   return {
     type: DELETE_LANE,

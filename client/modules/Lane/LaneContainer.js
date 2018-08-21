@@ -4,7 +4,7 @@ import { DropTarget } from 'react-dnd';
 import ItemTypes from '../Kanban/itemTypes';
 
 import Lane from './Lane';
-import { deleteLaneRequest, updateLaneRequest, editLane, moveBetweenLanes } from './LaneActions';
+import { deleteLaneRequest, updateLaneRequest, editLane, moveBetweenLanes, updateNotesInLaneRequest } from './LaneActions';
 import { createNoteRequest } from '../Note/NoteActions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -21,18 +21,25 @@ const mapDispatchToProps = {
 };
 
 const noteTarget = {
- hover(targetProps, monitor) {
-   const sourceProps = monitor.getItem();
-   const { id: noteId, laneId: sourceLaneId } = sourceProps;
 
-   // if (!targetProps.lane.notes.length) {
-   //   targetProps.moveBetweenLanes(
-   //     targetProps.lane.id,
-   //     noteId,
-   //     sourceLaneId,
-   //   );
+   drop(targetProps, monitor) {
+    const sourceProps = monitor.getItem();
+    const { id: noteId, laneId: sourceLaneId } = sourceProps;
+
+    const notContains = !targetProps.lane.notes.includes(noteId)
+    if (targetProps.lane.id !== sourceLaneId && notContains) {
+      targetProps.moveBetweenLanes(
+        targetProps.lane.id,
+        noteId,
+        sourceLaneId,
+      );
+    }
+   },
+
+   // drop(props, monitor, component) {
+   //     console.log("Dropped", props);
+   //     updateNotesInLaneRequest(props.lane);
    // }
- },
 };
 
 export default compose(

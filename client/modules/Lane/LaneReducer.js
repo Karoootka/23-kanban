@@ -45,7 +45,7 @@ export default function lanes(state = initialState, action) {
 
     case MOVE_WITHIN_LANE:
       const moveLane = { ...state[action.laneId] };
-      moveLane.notes = moveNotes(moveLane.notes, action.sourdeId, action.targetId);
+      moveLane.notes = moveNotes(moveLane.notes, action.sourceId, action.targetId);
       return { ...state, [action.laneId] : moveLane };
 
     case MOVE_BETWEEN_LANES:
@@ -54,7 +54,7 @@ export default function lanes(state = initialState, action) {
       const sourceLane = { ...state[action.sourceLaneId] };
       sourceLane.notes = sourceLane.notes.filter(noteId => noteId !== action.noteId);
       return { ...state, [action.targetLaneId]: targetLane, [action.sourceLaneId]: sourceLane };
-    
+
 
     default:
         return state;
